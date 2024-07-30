@@ -5,12 +5,13 @@ function getComputerChoice() {
     return rps[rng_value];
 }
 
-function game() {
+function playFiveRounds() {
     let player_score = 0;
     let computer_score = 0;
 
 
     // play 5 rounds
+
     for (i=0;i<5;i++) {
         let playerChoice = ""; 
 
@@ -38,7 +39,11 @@ function game() {
     }
     if (computer_score > player_score) console.log(`You lose the game...`);
     else if (player_score > computer_score) console.log(`You win the game`);
-    else console.log(`The game was tied.`);
+    else console.log(`The game was tied.`);    
+}
+
+function game() {
+
 }
 
 // Plays a single round

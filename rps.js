@@ -59,10 +59,13 @@ function game() {
   rpsDiv.appendChild(paper);
   rpsDiv.appendChild(scissors);
 
+  const resultsDiv = document.createElement("div");
+  document.body.append(resultsDiv);
+
   function rpsSelection(e) {
     const choice = e.target.textContent;
     const result = playRound(choice, getComputerChoice());
-    console.log(result);
+    resultsDiv.textContent = result;
   }
   rpsDiv.addEventListener("click", rpsSelection);
 

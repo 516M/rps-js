@@ -59,13 +59,34 @@ function game() {
   rpsDiv.appendChild(paper);
   rpsDiv.appendChild(scissors);
 
+  const playerScore = document.createElement("div");
+  playerScore.textContent = 0;
+  document.body.append(playerScore);
+
+  const computerScore = document.createElement("div");
+  computerScore.textContent = 0;
+  document.body.append(computerScore);
+
   const resultsDiv = document.createElement("div");
   document.body.append(resultsDiv);
 
   function rpsSelection(e) {
     const choice = e.target.textContent;
     const result = playRound(choice, getComputerChoice());
-    resultsDiv.textContent = result;
+
+    if (result.includes("Lose")) {
+      computerScore.textContent = parseInt(computerScore.textContent) + 1;
+    } else if (result.includes("Win")) {
+      playerScore.textContent = parseInt(playerScore.textContent) + 1;
+    }
+
+    if (parseInt(computerScore.textContent) >= 5) {
+      resultsDiv.textContent = "Game over! The computer wins!";
+    } else if (parseInt(playerScore.textContent) >= 5) {
+      resultsDiv.textContent = "Congratulations, you win!";
+    } else {
+      resultsDiv.textContent = result;
+    }
   }
   rpsDiv.addEventListener("click", rpsSelection);
 

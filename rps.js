@@ -5,45 +5,6 @@ function getComputerChoice() {
   return rps[rng_value];
 }
 
-function playFiveRounds() {
-  let player_score = 0;
-  let computer_score = 0;
-
-  // play 5 rounds
-
-  for (i = 0; i < 5; i++) {
-    let playerChoice = "";
-
-    loop: while (true) {
-      playerChoice = prompt("Rock, paper, scissors?").toLowerCase();
-      if (
-        playerChoice == "rock" ||
-        playerChoice == "paper" ||
-        playerChoice == "scissors"
-      ) {
-        break loop;
-      } else {
-        alert("Please enter one of the three: Rock, paper, scissors");
-      }
-    }
-
-    let result = playRound(playerChoice, getComputerChoice());
-    if (result.includes("Lose")) {
-      alert("You lost this round!");
-      computer_score += 1;
-    } else if (result.includes("Win")) {
-      alert("You won this round!");
-      player_score += 1;
-    } else {
-      alert("You tied this round");
-    }
-    console.log(`${result}`);
-  }
-  if (computer_score > player_score) console.log(`You lose the game...`);
-  else if (player_score > computer_score) console.log(`You win the game`);
-  else console.log(`The game was tied.`);
-}
-
 function game() {
   const rpsDiv = document.createElement("div");
   rpsDiv.className = "rps-buttons";
